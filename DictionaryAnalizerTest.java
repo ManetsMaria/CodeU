@@ -23,7 +23,7 @@ public class DictionaryAnalizerTest {
     }
 
     private static boolean test1(){
-        String [] dictionary = {"PAPRICA", "RAPRICA", "RATRICA", "RARRICA", "AAAAAAAAA", "AAAAAAAAR", "PAAAAAAAA"};
+        String [] dictionary = {"PAPRICA", "RAPRICA", "RATRICA", "RARRICA", "AA", "ACA"};
         dictionaryAnalizer = new DictionaryAnalizer(dictionary);
         ArrayList <Character> result = dictionaryAnalizer.getAlphabet();
        // System.out.print(dictionaryAnalizer.getAlphabet());
@@ -35,12 +35,13 @@ public class DictionaryAnalizerTest {
         int indexP = result.indexOf('P');
         int indexR = result.indexOf('R');
         int indexT = result.indexOf('T');
-        if (indexA < indexR && indexA < indexP && indexP < indexT && indexP < indexR && indexT < indexR)
+        int indexC = result.indexOf('C');
+        if (indexA < indexC && indexR < indexA && indexP < indexT && indexP < indexR && indexT < indexR)
             return true;
         return false;
     }
     private static boolean test2() {
-        String [] dictionary = {"PAPRICA", "RAPRICA", "RATRICA", "RARRICA", "AAAAAAAAR", "AAAAAAAAA", "PAAAAAAAA"};
+        String [] dictionary = {"PAPRICA", "RAPRICA", "RATRICA", "RARRICA", "AA", "AP"};
         dictionaryAnalizer = new DictionaryAnalizer(dictionary);
         ArrayList <Character> result = dictionaryAnalizer.getAlphabet();
         if (result == null)

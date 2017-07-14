@@ -24,24 +24,17 @@ public class DictionaryAnalizer {
         for (int i = 1; i < dictionary.length; i++){
             String previousWord = dictionary[i-1];
             String currentWord = dictionary[i];
-            if (previousWord.length() != currentWord.length()){
-                for (int j = 0; j < currentWord.length(); j++){
-                    graph.addLetter(currentWord.charAt(j));
-                }
+            int k=0;
+            while (k < previousWord.length() && k < currentWord.length() && previousWord.charAt(k) == currentWord.charAt(k)){
+                k++;
             }
-            else{
-                int k=0;
-                while (k < previousWord.length() && previousWord.charAt(k) == currentWord.charAt(k)){
-                    k++;
-                }
-                if (k < currentWord.length()){
-                    graph.addRelations(currentWord.charAt(k), previousWord.charAt(k));
-                    k++;
-                }
-                while (k < currentWord.length()){
-                    graph.addLetter(currentWord.charAt(k));
-                    k++;
-                }
+            if (k < currentWord.length()){
+                graph.addRelations(currentWord.charAt(k), previousWord.charAt(k));
+                k++;
+            }
+            while (k < currentWord.length()){
+                graph.addLetter(currentWord.charAt(k));
+                k++;
             }
         }
         return graph.topologicalSortResult();
